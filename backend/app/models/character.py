@@ -28,3 +28,4 @@ class Character(Base):
     assets = relationship("CharacterAsset", back_populates="character", cascade="all, delete-orphan")
     jobs = relationship("GenerationJob", back_populates="character")
     qa_reports = relationship("QAReport", back_populates="character")
+    pipeline_runs = relationship("PipelineRun", back_populates="character")

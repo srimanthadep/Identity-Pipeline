@@ -33,6 +33,11 @@ class GenerationJob(Base):
     adapter_config = Column(Text, default="{}")  # JSON string
     seed = Column(Integer, nullable=True)
     is_simulated = Column(Integer, default=1, nullable=False)  # 1 = True, 0 = False
+
+    # Pipeline linkage
+    pipeline_run_id = Column(String(36), ForeignKey("pipeline_runs.id"), nullable=True, index=True)
+    scene_number = Column(Integer, nullable=True)
+    camera_angle = Column(String(50), nullable=True)
     
     created_at = Column(String(32), default=utc_now)
     updated_at = Column(String(32), default=utc_now, onupdate=utc_now)
@@ -40,4 +45,5 @@ class GenerationJob(Base):
     # Relationships
     character = relationship("Character", back_populates="jobs")
     reference_asset = relationship("CharacterAsset", back_populates="jobs")
+    pipeline_run = relationship("PipelineRun", back_populates="jobs")
     qa_reports = relationship("QAReport", back_populates="job", cascade="all, delete-orphan")

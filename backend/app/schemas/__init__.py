@@ -18,6 +18,18 @@ from app.schemas.qa import (
     QAReportCreate,
     QAReportRead,
 )
+from app.schemas.blueprint import (
+    CameraAngle,
+    ShotType,
+    ScenePlan,
+    VideoBlueprintPlan,
+    CharacterContext,
+    PipelinePlanRequest,
+    PipelinePlanResponse,
+    PipelineExecuteRequest,
+    PipelineSceneResult,
+    PipelineRunRead,
+)
 
 __all__ = [
     "CharacterBase",
@@ -34,4 +46,14 @@ __all__ = [
     "QAReportBase",
     "QAReportCreate",
     "QAReportRead",
+    "CameraAngle",
+    "ShotType",
+    "ScenePlan",
+    "VideoBlueprintPlan",
+    "CharacterContext",
+    "PipelinePlanRequest",
+    "PipelinePlanResponse",
+    "PipelineExecuteRequest",
+    "PipelineSceneResult",
+    "PipelineRunRead",
 ]

@@ -11,7 +11,7 @@ sys.path.insert(0, str(backend_dir))
 
 from app.config import settings
 from app.database import Base
-from app.models import Character, CharacterAsset, GenerationJob, QAReport
+from app.models import Character, CharacterAsset, GenerationJob, QAReport, PipelineRun
 
 config = context.config
 

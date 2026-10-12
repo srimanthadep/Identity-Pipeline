@@ -43,3 +43,30 @@ class PromptBuilder:
         id_str = cls.format_identity_string(identity_block)
         clean_scene = scene_prompt.strip()
         return f"{id_str} [SCENE: {clean_scene}]"
+
+    @classmethod
+    def assemble_prompt_with_angle(
+        cls,
+        identity_block: Dict[str, Any],
+        scene_prompt: str,
+        camera_angle: str = "front"
+    ) -> str:
+        """
+        Builds the final Wan I2V prompt with camera angle guidance to steer
+        orientation while anchoring the identity block.
+        """
+        angle_hints = {
+            "front": "facing the camera directly",
+            "three_quarter": "at a three-quarter angle, slightly turned",
+            "side_profile": "shown from the side in profile view",
+            "over_shoulder": "seen from behind and over the shoulder",
+            "wide": "in a wide establishing shot",
+            "close_up": "in a detailed close-up shot"
+        }
+        angle_key = str(camera_angle).lower().replace("cameraangle.", "")
+        angle_text = angle_hints.get(angle_key, "")
+        clean_scene = scene_prompt.strip()
+        if angle_text and angle_text not in clean_scene.lower():
+            clean_scene = f"{clean_scene}. Camera: {angle_text}."
+        id_str = cls.format_identity_string(identity_block)
+        return f"{id_str} [SCENE: {clean_scene}]"

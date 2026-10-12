@@ -24,10 +24,12 @@ wheels/
 *.egg
 .pytest_cache/
 
-# Database
+# Database & Outputs
 data/*.db
 data/*.sqlite
 data/*.sqlite3
+data/outputs/*
+!data/outputs/.gitkeep
 !data/.gitkeep
 
 # Environment

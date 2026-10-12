@@ -24,6 +24,10 @@ class Settings(BaseSettings):
     FAL_KEY: str = ""
     DEFAULT_ADAPTER: str = "simulated"
 
+    # Gemini Planner
+    GEMINI_API_KEY: str = ""
+    GEMINI_MODEL: str = "gemini-3.8-flash"
+
 settings = Settings()
 
 # Ensure directories exist
